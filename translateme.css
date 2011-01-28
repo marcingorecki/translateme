@@ -1,0 +1,67 @@
+/* 
+Copyright 2010 Kenneth Liu.
+
+This file is part of ChromeItLater.
+
+ChromeItLater is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+any later version.
+
+ChromeItLater is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with ChromeItLater.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+/* @import url(http://fonts.googleapis.com/css?family=Arimo&subset=latin);
+*/
+
+body {
+	font-family: arial, sans-serif;
+}
+
+   
+fieldset {
+	border-radius: .25em;
+}
+
+
+/**************************
+* Styles for the options page
+***************************/
+
+#options_footer a:link { color: black; text-decoration:underline; }
+#options_footer a:visited { color: black; text-decoration:underline; }
+#options_footer a:hover { color: black; text-decoration:underline; }
+#options_footer a:active { color: black; text-decoration:underline; }
+
+#container {
+}
+ 
+#flash {
+	border-radius: .5em;
+}
+
+#options_container {
+	width: 50%;
+}
+
+#options_content {
+	border-top-left-radius: .5em;
+	border-top-right-radius: .5em;
+	background-color: #36abe4;
+	padding: 1em;	
+}
+
+#options_footer {
+	padding: 1em;	
+	font-size: .75em;
+	background-color: gray;
+	border-bottom-left-radius: .5em;
+	border-bottom-right-radius: .5em;
+}           
+                          

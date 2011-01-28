@@ -1,0 +1,16 @@
+{
+  "name": "Translate Me",
+  "version": "1.2",
+  "description": "Translate parts of pages with just two clicks.",
+  "background_page": "background.html",
+  "permissions": [
+    "contextMenus",
+    "notifications"
+  ],
+  "icons": {
+    "16": "Translation16.png",
+    "48": "Translation48.png",
+    "128": "Translation.png"
+  },
+  "options_page": "options.html"
+}
