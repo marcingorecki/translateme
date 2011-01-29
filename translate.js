@@ -21,7 +21,7 @@ if(storedFromLang) {
 } else {
 	showOptions();
 }
-if(storedToLang) fromTo=storedToLang;
+if(storedToLang) toLang=storedToLang;
 	
 var query = "";
 
