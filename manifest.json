@@ -1,7 +1,7 @@
 {
-  "name": "Translate Me",
-  "version": "1.4",
-  "description": "Translate parts of pages with just two clicks.",
+  "name": "Translate And Speak!",
+  "version": "1.4.1",
+  "description": "Translate and reads parts of pages with just two clicks.",
   "background_page": "background.html",
   "permissions": [
     "contextMenus",

@@ -39,13 +39,16 @@ function showNotification(title, text){
    }
 }
 
+function translationNotification(queryN,fromN,toN,resultN){
+	var noficationTitle=queryN + " ("+fromN+"->"+toN+")";
+	var noficationText=resultN.translation;
+  
+	showNotification(noficationTitle, noficationText);
+}
+
 //display results in notification window
 function displayTranslation(result) {
-  
-  var noficationTitle=query + " ("+fromLang+"->"+toLang+")";
-  var noficationText=result.translation;
-  
-  showNotification(noficationTitle, noficationText);
+	translationNotification(query,fromLang,toLang,result);
 }
 
 //translate selected text directly on translate.google.com. This gives more results that the API search
@@ -73,7 +76,9 @@ function detectAndTranslate(info, tab) {
 		} else {
 			detectedLang=fromLang;
 		}
-		google.language.translate(originaltext, fromLang, toLang, displayTranslation);
+		google.language.translate(originaltext, detectedLang, toLang, function(result) {  
+			  translationNotification(query,detectedLang,toLang,result);
+			});
 	});	
 	_gaq.push(['_trackEvent', 'Translate Detected', 'clicked']);
 }
