@@ -1,3 +1,5 @@
+//Author: http://emilsblog.lerch.org/2009/07/javascript-hacks-using-xhr-to-load.html
+
 BinaryBase64 = {
  
  // private property
