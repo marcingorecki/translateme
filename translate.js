@@ -126,6 +126,51 @@ function onClickSpeakSelection(info, tab){
 	});	
 }
 
+//detect Language and show on wikipedia
+function onClickShowOnWiki(info, tab){
+	_gaq.push(['_trackEvent', 'ShowOnWikipedia', 'clicked']);
+	originaltext = info["selectionText"];
+	
+	
+	google.language.detect(originaltext, function(result){
+		if(result.language){
+			detectedLang=result.language;
+		} else {
+			detectedLang=fromLang;
+		}
+		
+		//check if remapping is required
+		if(langToWiki[detectedLang]){
+			detectedLang=langToWiki[detectedLang];
+		}
+		
+		var url="http://"+detectedLang+".wikipedia.org/wiki/"+originaltext.toLowerCase();
+		window.open(url);
+	});	
+}
+
+//detect Language and show on wiktionary
+function onClickShowOnWiktionary(info, tab){
+	_gaq.push(['_trackEvent', 'ShowOnWiktionary', 'clicked']);
+	originaltext = info["selectionText"];
+	
+	
+	google.language.detect(originaltext, function(result){
+		if(result.language){
+			detectedLang=result.language;
+		} else {
+			detectedLang=fromLang;
+		}
+		
+		//check if remapping is required
+		if(langToWiki[detectedLang]){
+			detectedLang=langToWictionary[detectedLang];
+		}
+		
+		var url="http://"+detectedLang+".wiktionary.org/wiki/"+originaltext.toLowerCase();
+		window.open(url);
+	});	
+}
 
 //show extension options
 function showOptions() {
@@ -136,6 +181,10 @@ chrome.contextMenus.create({"title": "Translate", "contexts":["selection"], "onc
 chrome.contextMenus.create({"title": "Translate (Detect Language)", "contexts":["selection"], "onclick": detectAndTranslate});
 chrome.contextMenus.create({"title": "Full Translation", "contexts":["selection"], "onclick": onClickSelectionFull});
 chrome.contextMenus.create({"title": "Speak!", "contexts":["selection"], "onclick": onClickSpeakSelection});
+chrome.contextMenus.create({"type": "separator", "contexts":["selection"]});
+chrome.contextMenus.create({"title": "Show on Wikipedia", "contexts":["selection"], "onclick": onClickShowOnWiki});
+chrome.contextMenus.create({"title": "Show on Wiktionary", "contexts":["selection"], "onclick": onClickShowOnWiktionary});
+chrome.contextMenus.create({"type": "separator", "contexts":["selection"]});
 chrome.contextMenus.create({"title": "Options", "contexts":["selection"], "onclick": showOptions});
 
 chrome.contextMenus.create({"title": "TranslateMe Options", "contexts":["page"], "onclick": showOptions});

@@ -1,6 +1,20 @@
 var FROMLANG_KEY = "fromLang";
 var TOLANG_KEY = "toLang";
 
+//language mapping between google translate (used as main code in the extension and wikipedia
+var langToWiki = {
+"zh-CN":"zh",
+"zh-TW":"zh-classical",
+"iw":"he"
+}
+
+var langToWictionary = {
+"zh-CN":"zh",
+"zh-TW":"zh",
+"ht":"en", //Haitian words are included in EN wiki
+"iw":"he"
+}
+
 var languages = {"Afrikaans":"af",
 "Albanian":"sq",
 "Arabic":"ar",
