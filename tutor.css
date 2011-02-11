@@ -1,0 +1,41 @@
+body{
+background:url(images/background.jpg);
+background-color:#6797AE;
+background-repeat:repeat-x;
+}
+
+#mainDiv, #wordsGrid, #wordsGrid, #optionsDiv{
+margin:10px auto 10px auto;
+width:770px;
+}
+
+#donate{
+  color: #333;
+  line-height: 150%;
+}
+
+#donate img{
+  margin:auto !important;
+  display: block;
+}
+
+/* icons used in the toolbar */
+.showAll {
+  background-image:url(images/showAll.png) !important;
+}
+.showNotMemorized {
+  background-image:url(images/showNotMemorized.png) !important;
+}
+
+.newWord {
+  background-image:url(images/newWord.gif) !important;
+}
+
+.memorizeInstruction{
+	font-size:15px;
+}
+
+.x-panel-body{
+	opacity: .9;
+}
+

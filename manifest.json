@@ -1,17 +1,22 @@
 {
   "name": "Translate And Speak!",
-  "version": "1.5",
-  "description": "Translate and reads parts of pages with just two clicks.",
+  "version": "1.6",
+  "description": "Translates and reads parts of pages with just two clicks.",
   "background_page": "background.html",
   "permissions": [
     "contextMenus",
     "notifications",
     "http://translate.google.com/"
   ],
+  "browser_action": {
+    "default_icon": "Translation48.png",
+    "popup": "popup.html"
+  },
   "icons": {
     "16": "Translation16.png",
     "48": "Translation48.png",
     "128": "Translation.png"
   },
+  "default_locale": "en",
   "options_page": "options.html"
 }

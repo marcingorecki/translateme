@@ -1,172 +1,23 @@
-<!-- 
-	Copyright 2011 Marcin Gorecki.
-	
-	Option page is based on http://kenliu.github.com/chromeitlater/
- 
-	This file is part of TranslateMe Chrome Extension.
-
-    translateme is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 2 of the License, or
-    any later version.
-
-    translateme is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with translateme.  If not, see <http://www.gnu.org/licenses/>.
--->
-<html>
-<head><title>Translate Me Options</title>
-<link rel="stylesheet" type="text/css" href="translateme.css" />	
-<script src="common.js"></script>
-<script src="lib/prototype.js" type="text/javascript"></script>
-<script src="lib/scriptaculous.js?load=effects" type="text/javascript"></script>
-<script type="text/javascript">
-
-function saveOptions() {
-
-	if (!fromLang.value || !toLang.value) {
-		flashError('Please select languages.');
-		return;
-	}
-
-	localStorage[FROMLANG_KEY] = fromLang.value;
-	localStorage[TOLANG_KEY] = toLang.value;
-    
-	chrome.extension.getBackgroundPage().fromLang=fromLang.value;
-	chrome.extension.getBackgroundPage().toLang=toLang.value;
-	
-	flash('Options saved.');
-}
-
-function loaded(){
-	checkFreshInstall();
-	restoreOptions();
-}
-
-
-function setSelect(id, val) {
-	elem = document.getElementById(id);
-	for(i = elem.length - 1; i > 0; i--) {
-		if(elem[i].value == val) {
-			elem[i].selected = true;
-			break;
-		}
-	}	
-}
-
-function restoreOptions() {
-	var storedFromLang = localStorage[FROMLANG_KEY];
-	var storedToLang = localStorage[TOLANG_KEY];
-	if (!storedFromLang) storedFromLang="en";
-	if (!storedToLang) storedToLang="pl";
-	setSelect("fromLang",storedFromLang);
-	setSelect("toLang",storedToLang);
-}
-
-function checkFreshInstall() {
-	if (!localStorage[FROMLANG_KEY]) {
-		showWelcomeMessage();
-		return false;
-	} else return true;	
-}
-
-function showWelcomeMessage() {
-	flash('It looks like this extension was just installed.<br/> Please set your options.');
-}
-
-function flash(message) {
-	var flashDiv = document.getElementById('flash');
-	flashDiv.style.padding = '1em';
-	flashDiv.style.backgroundColor = 'LightGreen';
-	flashDiv.innerHTML = message;
-	//TODO fadeout then in if flash is already visible (i.e. save was already clicked once)
-	//if (flashDiv.style.display != 'none') Effect.Fade('flash', { duration: 0.25 });
-	Effect.Appear('flash', { duration: 0.5 });
-}
-
-function flashError(message) {
-	var flashDiv = document.getElementById('flash');
-	flashDiv.style.padding = '1em';
-	flashDiv.style.backgroundColor = 'Red';
-	flashDiv.innerHTML = message;
-	Effect.Appear('flash', { duration: 0.5 });
-}
-
-function addLanguages(select) {
-	var myselect=document.getElementById(select);
-	for (key in languages){
-		myselect.add(new Option(key, languages[key]))
-	}
-}
-
-</script>
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-21038528-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script></head>
-
-<body onload="loaded()">
-	<div id="options_container"> 
-		<div id="options_header">
-			<h1 id="translateme_options"><img src="Translation48.png"/>&nbsp;Translate Me Options</h1>			
-		</div>
-		<div id="options_content"> 
-			<div id="flash" style="display:none"></div><br/>
-			<fieldset>
-				<legend>Source language</legend>
-				<table>
-					<tr>
-						<td><label for="fromLang">Translate From:</label></td>
-						<td>
-						<select name="fromLang" id="fromLang">						
-						</select>
-						<script type="text/javascript">addLanguages("fromLang");</script>
-						</td>
-                 	</tr>
-				</table>
-			</fieldset>
-			<fieldset>
-				<legend>Destination language</legend>
-				<table>
-					<tr>
-						<td><label for="toLang">Translate To:</label></td>
-						<td>
-						<select name="toLang" id="toLang">						
-						</select>
-						<script type="text/javascript">addLanguages("toLang");</script>
-						</td>
-                 	</tr>
-				</table>
-			</fieldset>
-
-			<p>                                                           
-
-			<br/>
-				<button onclick="saveOptions()">Save Options</button>
-			</p> 
-		</div>
-		<div id="options_footer">
-			<p><b>Translate Me</b></p>
-			<p>
-				&copy; 2011 <a href="http://www.mgorecki.net">http://www.mgorecki.net</a>
-			</p>
-			<p>This extension is <a href="https://github.com/marcingorecki/translateme">open-source</a> software licensed under the
-				<a href="http://www.gnu.org/licenses/gpl-2.0.html">GPLv2</a>. Icons by <a href="http://www.veryicon.com/icons/object/dashboard-icons/translation.html">Fast Icon</a>.
-			</p>
-		</div>
-	</div>
-</body>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Translate And Speak!</title>
+		<link rel="stylesheet" type="text/css" href="lib/ext/resources/css/ext-all.css" />
+		<link rel="stylesheet" type="text/css" href="tutor.css" />
+		<script src="lib/jquery-1.5.min.js"></script>		
+		<script src="common.js"></script>
+		<script src="languages.js"></script>
+		<script src="dataAccess.js"></script>
+  		<script src="controllerOptions.js"></script>
+		
+		<script type="text/javascript" src="lib/ext/adapter/ext/ext-base.js"></script>
+		<script src="lib/ext/ext-all.js"></script>
+		<script src="options.js"></script>
+    </head>
+    <body>
+		
+	<div id='optionsDiv'></div>	
+    </body>
 </html>

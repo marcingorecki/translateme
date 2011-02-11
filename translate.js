@@ -1,27 +1,11 @@
-
-//set defaults
-var fromLang = "en";
-var toLang = "pl";
-
-
 function init()
 {
 	google.language.getBranding('branding');
 }
 google.load("language", "1");
 google.setOnLoadCallback(init);
-
-
 	
-//read stored data
-var storedFromLang = localStorage[FROMLANG_KEY];
-var storedToLang = localStorage[TOLANG_KEY];
-if(storedFromLang) {
-	fromLang=storedFromLang
-} else {
-	showOptions();
-}
-if(storedToLang) toLang=storedToLang;
+initializeTaS();
 	
 var query = "";
 
@@ -44,6 +28,7 @@ function translationNotification(queryN,fromN,toN,resultN){
 	var noficationText=resultN.translation;
   
 	showNotification(noficationTitle, noficationText);
+	insertWord(queryN,resultN.translation,fromN,toN);
 }
 
 //display results in notification window
@@ -81,28 +66,6 @@ function detectAndTranslate(info, tab) {
 			});
 	});	
 	_gaq.push(['_trackEvent', 'Translate Detected', 'clicked']);
-}
-
-//read text aloud
-function readItAloud(text, lang) {
-	xhr=new XMLHttpRequest();
-	xhr.onreadystatechange  = function(){ 
-		 if(xhr.readyState  == 4) {
-			if(xhr.status  == 200) {
-				var encoded=BinaryBase64.encodeBinary(xhr.responseText);
-				var src="data:audio/mp3;base64,"+encoded;
-				var audio=new Audio();
-				audio.src=src;
-				audio.play();
-			} else {
-				 alert("Audio data can't be retrieved, Error:"+xhr.status);
-			}
-		 }
-	}; 
-	xhr.overrideMimeType('text/plain; charset=x-user-defined');
-	url="http://translate.google.com/translate_tts?tl="+lang+"&q="+text;
-	xhr.open("GET", url,  true); 
-	xhr.send(null);
 }
 
 //detect Language and read it aloud!
@@ -186,5 +149,6 @@ chrome.contextMenus.create({"title": "Show on Wikipedia", "contexts":["selection
 chrome.contextMenus.create({"title": "Show on Wiktionary", "contexts":["selection"], "onclick": onClickShowOnWiktionary});
 chrome.contextMenus.create({"type": "separator", "contexts":["selection"]});
 chrome.contextMenus.create({"title": "Options", "contexts":["selection"], "onclick": showOptions});
+chrome.contextMenus.create({"type": "separator", "contexts":["selection"]});
 
 chrome.contextMenus.create({"title": "TranslateMe Options", "contexts":["page"], "onclick": showOptions});
