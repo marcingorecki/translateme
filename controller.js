@@ -21,6 +21,7 @@ function gridUpdated(gridEvent) {
 	
 	updateWord(id, field, newValue);
 	WordsDataStore.commitChanges();
+	_gaq.push(['_trackEvent', 'Grid', 'Updated']);
 }
 
 function showNotMemorized(){
@@ -39,6 +40,7 @@ function removeWord(rowId){
 	console.log("Removing "+rowId+", deleting "+id);
 	deleteWord(id);
 	WordsDataStore.removeAt(rowId);
+	_gaq.push(['_trackEvent', 'Grid', 'Word removed']);
 }
 
 function createNewWord(){
@@ -46,7 +48,7 @@ function createNewWord(){
 	if(isWordFormValid()){
 		insertWord(originalField.getValue(), translatedField.getValue(), originalLangField.getValue(), translatedLangField.getValue());
 		WordCreateWindow.hide();
-		
+		_gaq.push(['_trackEvent', 'Grid', 'New word created']);
 		switch(lastShow){
 			case 'all' : showAll(); break;
 			case 'notmemorized' : showNotMemorized(); break;
