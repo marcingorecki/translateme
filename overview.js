@@ -156,9 +156,26 @@ Ext.onReady(function(){
 	translatedLangField.setValue(toLangManual);
 	mainForm.render('mainDiv');
 	
-	//recent 
+	//hint view
 	
-	// create the data store
-
+	var hintForm = new Ext.FormPanel({
+        labelAlign: 'top',
+        bodyStyle:'padding:5px',
+        width: 770,        
+		title: LANG.MEMORIZE_FORM_TITLE,
+        items: [{
+			border:true,
+			items:[{
+				xtype:'box',
+				id:'instruction',
+				fieldLabel:LANG("MAIN_DESC_TITLE"),
+				hideLabel: true,
+				cls:'x-form-item',
+				html:LANG("HINT_DESC_HTML"),
+			}]
+        }]
+	});
+	
+	hintForm.render('hintDiv');
 	
 });

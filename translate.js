@@ -149,6 +149,5 @@ chrome.contextMenus.create({"title": "Show on Wikipedia", "contexts":["selection
 chrome.contextMenus.create({"title": "Show on Wiktionary", "contexts":["selection"], "onclick": onClickShowOnWiktionary});
 chrome.contextMenus.create({"type": "separator", "contexts":["selection"]});
 chrome.contextMenus.create({"title": "Options", "contexts":["selection"], "onclick": showOptions});
-chrome.contextMenus.create({"type": "separator", "contexts":["selection"]});
 
 chrome.contextMenus.create({"title": "TranslateMe Options", "contexts":["page"], "onclick": showOptions});

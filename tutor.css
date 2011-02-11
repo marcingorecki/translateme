@@ -5,7 +5,12 @@ background-repeat:repeat-x;
 }
 
 #mainDiv, #wordsGrid, #wordsGrid, #optionsDiv{
-margin:10px auto 10px auto;
+margin:10px auto 0px auto;
+width:770px;
+}
+
+#hintDiv{
+margin:0px auto 0px auto;
 width:770px;
 }
 
