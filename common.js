@@ -44,58 +44,59 @@ var memorizedStates=[
 ];
 
 var languagesArray = [
-["af","Afrikaans"],
-["sq","Albanian"],
-["ar","Arabic"],
-["be","Belarusian"],
-["bg","Bulgarian"],
-["ca","Catalan"],
-["zh-CN","Chinese Simplified"],
-["zh-TW","Chinese Traditional"],
-["hr","Croatian"],
-["cs","Czech"],
-["da","Danish"],
-["nl","Dutch"],
-["en","English"],
-["et","Estonian"],
-["tl","Filipino"],
-["fi","Finnish"],
-["fr","French"],
-["gl","Galician"],
-["de","German"],
-["el","Greek"],
-["ht","Haitian Creole"],
-["iw","Hebrew"],
-["hi","Hindi"],
-["hu","Hungarian"],
-["is","Icelandic"],
-["id","Indonesian"],
-["ga","Irish"],
-["it","Italian"],
-["ja","Japanese"],
-["lv","Latvian"],
-["lt","Lithuanian"],
-["mk","Macedonian"],
-["ms","Malay"],
-["mt","Maltese"],
-["no","Norwegian"],
-["fa","Persian"],
-["pl","Polish"],
-["pt","Portuguese"],
-["ro","Romanian"],
-["ru","Russian"],
-["sr","Serbian"],
-["sk","Slovak"],
-["sl","Slovenian"],
-["es","Spanish"],
-["sw","Swahili"],
-["sv","Swedish"],
-["th","Thai"],
-["tr","Turkish"],
-["uk","Ukrainian"],
-["vi","Vietnamese"],
-["cy","Welsh"],
-["yi","Yiddish"]];
+	["af",LANG("LANG_af")],
+	["sq",LANG("LANG_sq")],
+	["ar",LANG("LANG_ar")],
+	["be",LANG("LANG_be")],
+	["bg",LANG("LANG_bg")],
+	["ca",LANG("LANG_ca")],
+	["zh-CN",LANG("LANG_zh_CN")],
+	["zh-TW",LANG("LANG_zh_TW")],
+	["hr",LANG("LANG_hr")],
+	["cs",LANG("LANG_cs")],
+	["da",LANG("LANG_da")],
+	["nl",LANG("LANG_nl")],
+	["en",LANG("LANG_en")],
+	["et",LANG("LANG_et")],
+	["tl",LANG("LANG_tl")],
+	["fi",LANG("LANG_fi")],
+	["fr",LANG("LANG_fr")],
+	["gl",LANG("LANG_gl")],
+	["de",LANG("LANG_de")],
+	["el",LANG("LANG_el")],
+	["ht",LANG("LANG_ht")],
+	["iw",LANG("LANG_iw")],
+	["hi",LANG("LANG_hi")],
+	["hu",LANG("LANG_hu")],
+	["is",LANG("LANG_is")],
+	["id",LANG("LANG_id")],
+	["ga",LANG("LANG_ga")],
+	["it",LANG("LANG_it")],
+	["ja",LANG("LANG_ja")],
+	["lv",LANG("LANG_lv")],
+	["lt",LANG("LANG_lt")],
+	["mk",LANG("LANG_mk")],
+	["ms",LANG("LANG_ms")],
+	["mt",LANG("LANG_mt")],
+	["no",LANG("LANG_no")],
+	["fa",LANG("LANG_fa")],
+	["pl",LANG("LANG_pl")],
+	["pt",LANG("LANG_pt")],
+	["ro",LANG("LANG_ro")],
+	["ru",LANG("LANG_ru")],
+	["sr",LANG("LANG_sr")],
+	["sk",LANG("LANG_sk")],
+	["sl",LANG("LANG_sl")],
+	["es",LANG("LANG_es")],
+	["sw",LANG("LANG_sw")],
+	["sv",LANG("LANG_sv")],
+	["th",LANG("LANG_th")],
+	["tr",LANG("LANG_tr")],
+	["uk",LANG("LANG_uk")],
+	["vi",LANG("LANG_vi")],
+	["cy",LANG("LANG_cy")],
+	["yi",LANG("LANG_yi")]
+];
 
 
 //initialize google analytics
@@ -168,6 +169,20 @@ function readItAloud(text, lang) {
 	url="http://translate.google.com/translate_tts?tl="+lang+"&q="+text;
 	xhr.open("GET", url,  true); 
 	xhr.send(null);
+}
+
+function showNotification(title, text){
+	if (window.webkitNotifications) {
+	  var notification = webkitNotifications.createNotification(
+		  "Translation.png",
+		  title,
+		  text
+	  );
+	  notification.show();
+   } else {
+	//notifications not available, use old alert() method
+	alert(title+" - "+text);
+   }
 }
 
 //initalize

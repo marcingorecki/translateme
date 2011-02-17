@@ -55,6 +55,12 @@ function translateNow(){
 
 function readOriginal(){
 	query=originalField.getValue().trim();
+	
+	if(query.length>100){
+		showNotification(LANG("SPEAK_TEXT_TOO_LONG_TITLE"),LANG("SPEAK_TEXT_TOO_LONG_MSG"));
+		query=query.substring(0,99);
+	}
+
 	lang=originalLangField.getValue();
 	if(query.length>0){
 		readItAloud(query, lang);
@@ -63,6 +69,10 @@ function readOriginal(){
 
 function readTranslated(){
 	query=translatedField.getValue().trim();
+	if(query.length>100){
+		showNotification(LANG("SPEAK_TEXT_TOO_LONG_TITLE"),LANG("SPEAK_TEXT_TOO_LONG_MSG"));
+		query=query.substring(0,99);
+	}
 	lang=translatedLangField.getValue();
 	if(query.length>0){
 		readItAloud(query, lang);

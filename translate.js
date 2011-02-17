@@ -9,20 +9,6 @@ initializeTaS();
 	
 var query = "";
 
-function showNotification(title, text){
-	if (window.webkitNotifications) {
-	  var notification = webkitNotifications.createNotification(
-		  "Translation.png",
-		  title,
-		  text
-	  );
-	  notification.show();
-   } else {
-	//notifications not available, use old alert() method
-	alert(title+" - "+text);
-   }
-}
-
 function translationNotification(queryN,fromN,toN,resultN){
 	var noficationTitle=queryN + " ("+fromN+"->"+toN+")";
 	var noficationText=resultN.translation;
@@ -74,7 +60,7 @@ function onClickSpeakSelection(info, tab){
 	originaltext = info["selectionText"];
 	
 	if(originaltext.length>100){
-		showNotification("Text too long","Text too read will be truncated to 100 characters");
+		showNotification(LANG("SPEAK_TEXT_TOO_LONG_TITLE"),LANG("SPEAK_TEXT_TOO_LONG_MSG"));
 		originaltext=originaltext.substring(0,99);
 	}
 	
@@ -140,14 +126,14 @@ function showOptions() {
 	chrome.tabs.create({'url': 'options.html'}, null)
 }
 
-chrome.contextMenus.create({"title": "Translate", "contexts":["selection"], "onclick": onClickSelection});
-chrome.contextMenus.create({"title": "Translate (Detect Language)", "contexts":["selection"], "onclick": detectAndTranslate});
-chrome.contextMenus.create({"title": "Full Translation", "contexts":["selection"], "onclick": onClickSelectionFull});
-chrome.contextMenus.create({"title": "Speak!", "contexts":["selection"], "onclick": onClickSpeakSelection});
+chrome.contextMenus.create({"title": LANG("MENU_TRANSLATE"), "contexts":["selection"], "onclick": onClickSelection});
+chrome.contextMenus.create({"title": LANG("MENU_TRANSLATE_DETECT"), "contexts":["selection"], "onclick": detectAndTranslate});
+chrome.contextMenus.create({"title": LANG("MENU_TRANSLATE_FULL"), "contexts":["selection"], "onclick": onClickSelectionFull});
+chrome.contextMenus.create({"title": LANG("MENU_SPEAK"), "contexts":["selection"], "onclick": onClickSpeakSelection});
 chrome.contextMenus.create({"type": "separator", "contexts":["selection"]});
-chrome.contextMenus.create({"title": "Show on Wikipedia", "contexts":["selection"], "onclick": onClickShowOnWiki});
-chrome.contextMenus.create({"title": "Show on Wiktionary", "contexts":["selection"], "onclick": onClickShowOnWiktionary});
+chrome.contextMenus.create({"title": LANG("MENU_SHOW_WIKIPEDIA"), "contexts":["selection"], "onclick": onClickShowOnWiki});
+chrome.contextMenus.create({"title": LANG("MENU_SHOW_WICTIONARY"), "contexts":["selection"], "onclick": onClickShowOnWiktionary});
 chrome.contextMenus.create({"type": "separator", "contexts":["selection"]});
-chrome.contextMenus.create({"title": "Options", "contexts":["selection"], "onclick": showOptions});
+chrome.contextMenus.create({"title": LANG("MENU_Options"), "contexts":["selection"], "onclick": showOptions});
 
-chrome.contextMenus.create({"title": "TranslateMe Options", "contexts":["page"], "onclick": showOptions});
+chrome.contextMenus.create({"title": LANG("MENU_TAS_OPTIONS"), "contexts":["page"], "onclick": showOptions});

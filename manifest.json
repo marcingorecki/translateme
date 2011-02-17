@@ -1,6 +1,6 @@
 {
   "name": "Translate And Speak!",
-  "version": "1.6",
+  "version": "1.6.2",
   "description": "Translates and reads parts of pages with just two clicks.",
   "background_page": "background.html",
   "permissions": [
