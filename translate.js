@@ -137,3 +137,18 @@ chrome.contextMenus.create({"type": "separator", "contexts":["selection"]});
 chrome.contextMenus.create({"title": LANG("MENU_Options"), "contexts":["selection"], "onclick": showOptions});
 
 chrome.contextMenus.create({"title": LANG("MENU_TAS_OPTIONS"), "contexts":["page"], "onclick": showOptions});
+
+
+//check if there are any words to rememeber and if highlight the icon if necessary
+if(localStorage[SESSION_KEY] && localStorage[SESSION_KEY].length>2){
+    setIconHighlighted();
+} else {
+    selectWordsCount(updateIconBackground);
+}
+
+function updateIconBackground(tx, results){
+    var count = results.rows.item(0).count;
+    if(count>0){
+            setIconHighlighted();
+    }
+}

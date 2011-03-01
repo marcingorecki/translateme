@@ -79,16 +79,16 @@ Ext.onReady(function(){
 			
 	WordsColumnModel = new Ext.grid.ColumnModel([
 		  {header: LANG("WORD_GRID_HEADER_ID"), readOnly: true, dataIndex: 'id', width: 30, hidden: true},	
-		  {header: LANG("WORD_GRID_HEADER_ORIGINAL"), dataIndex: 'original', width: 198, sortable: true, 
+		  {header: LANG("WORD_GRID_HEADER_ORIGINAL"), dataIndex: 'original', width: 158, sortable: true, 
 				editor: new Ext.form.TextField({allowBlank: false, maxLength: 2000, maskRe: /([a-zA-Z0-9\s]+)$/ })},
-		  {header: LANG("WORD_GRID_HEADER_TRANSLATED"), dataIndex: 'translated', width: 197, sortable: true,
+		  {header: LANG("WORD_GRID_HEADER_TRANSLATED"), dataIndex: 'translated', width: 157, sortable: true,
 				editor: new Ext.form.TextField({allowBlank: false, maxLength: 2000, maskRe: /([a-zA-Z0-9\s]+)$/ }) },
-		  {header: LANG("WORD_GRID_HEADER_ORIGINAL_LANG"), dataIndex: 'originalLang', width: 120, sortable: true, editor: langCombo,renderer: Ext.util.Format.comboRenderer(langCombo)},
-		  {header: LANG("WORD_GRID_HEADER_TRANSLATED_LANG"), dataIndex: 'translatedLang', width: 120, sortable: true, 
+		  {header: LANG("WORD_GRID_HEADER_ORIGINAL_LANG"), dataIndex: 'originalLang', width: 90, sortable: true, editor: langCombo,renderer: Ext.util.Format.comboRenderer(langCombo)},
+		  {header: LANG("WORD_GRID_HEADER_TRANSLATED_LANG"), dataIndex: 'translatedLang', width: 90, sortable: true, 
 		  		editor: langComboTranslated, renderer: Ext.util.Format.comboRenderer(langComboTranslated)},
-		  {header: LANG("WORD_GRID_HEADER_ADDED_ON"), dataIndex: 'addedOn', width: 80, sortable: true, readOnly: true, renderer: formatDate}, 
-		  {header: LANG("WORD_GRID_HEADER_LAST_SHOWN"), dataIndex: 'lastDisplayed', width: 85, sortable: true, readOnly: true, renderer: formatDate, hidden: true},
-		  {header: LANG("WORD_GRID_HEADER_MEMORIZED"), dataIndex: 'memorized', width: 100, editor: memorizedCombo, renderer: Ext.util.Format.comboRenderer(memorizedCombo), hidden: true },
+		  {header: LANG("WORD_GRID_HEADER_ADDED_ON"), dataIndex: 'addedOn', width: 75, sortable: true, readOnly: true, renderer: formatDate}, 
+		  {header: LANG("WORD_GRID_HEADER_LAST_SHOWN"), dataIndex: 'lastDisplayed', width: 75, sortable: true, readOnly: true, renderer: formatDate, hidden: false},
+		  {header: LANG("WORD_GRID_HEADER_MEMORIZED"), dataIndex: 'memorized', width: 90, editor: memorizedCombo, renderer: Ext.util.Format.comboRenderer(memorizedCombo), hidden: false },
 		  {xtype: 'actioncolumn', width: 30,
                 items: [{
                     icon   : 'images/delete.gif', tooltip: LANG("WORD_GRID_DELETE_TOOLTIP"), handler: function(grid, rowIndex, colIndex) {

@@ -2,6 +2,7 @@ var translatedField;
 var originalField;
 var originalLangField;
 var translatedLangField;
+var checkLearnForm;
 
 Ext.onReady(function(){
 	Ext.QuickTips.init();
@@ -93,56 +94,55 @@ Ext.onReady(function(){
 	});
 	
 	var mainForm = new Ext.FormPanel({
-        labelAlign: 'top',
-        bodyStyle:'padding:5px',
-        width: 770,        
-		title: LANG.MEMORIZE_FORM_TITLE,
-        items: [{
-            xtype:'box',
-            id:'instruction',
-            fieldLabel:LANG("MAIN_DESC_TITLE"),
-			hideLabel: true,
-			cls:'memorizeInstruction',
-			html:LANG("MAIN_DESC_HTML"),
-        },{
-			border:true,
-            items:[{			
-				xtype: 'fieldset',
-                layout: 'form',
-                border:false,
-				style: 'margin-bottom:0;padding-bottom:0',
-                items: [originalField]
-			},{ 
-				xtype: 'fieldset',
-				title: LANG("Quick Translate"),
-				border: false,
-				style: 'margin-bottom:0;padding-bottom:0',
-				items : [
-					fromLabel,
-					new Ext.Spacer({width:5}),
-					originalLangField,
-					new Ext.Spacer({width:5}),
-					buttonSwap,
-					new Ext.Spacer({width:5}),
-					toLabel,
-					new Ext.Spacer({width:5}),
-					translatedLangField,
-					new Ext.Spacer({width:5}),
-					buttonTranslate,
-					new Ext.Spacer({width:5}),
-					buttonReadOrg,
-					new Ext.Spacer({width:5}),
-					buttonReadTranslated
-				],
-				layout:'hbox',
-				layoutConfig: {
-					padding: 0,
-					labelAlign: 'left'
-				}
-			},{			
-				xtype: 'fieldset',
-				hideLabel: true,
-				style: 'margin-bottom:0;padding-bottom:0',
+            labelAlign: 'top',
+            bodyStyle:'padding:5px',
+            width: 770,
+            items: [{
+                xtype:'box',
+                id:'instruction',
+                fieldLabel:LANG("MAIN_DESC_TITLE"),
+                            hideLabel: true,
+                            cls:'memorizeInstruction',
+                            html:LANG("MAIN_DESC_HTML"),
+            },{
+		border:true,
+                items:[{
+                    xtype: 'fieldset',
+                    layout: 'form',
+                    border:false,
+                    style: 'margin-bottom:0;padding-bottom:0',
+                    items: [originalField]
+		},{ 
+                    xtype: 'fieldset',
+                    title: LANG("Quick Translate"),
+                    border: false,
+                    style: 'margin-bottom:0;padding-bottom:0',
+                    items : [
+                            fromLabel,
+                            new Ext.Spacer({width:5}),
+                            originalLangField,
+                            new Ext.Spacer({width:5}),
+                            buttonSwap,
+                            new Ext.Spacer({width:5}),
+                            toLabel,
+                            new Ext.Spacer({width:5}),
+                            translatedLangField,
+                            new Ext.Spacer({width:5}),
+                            buttonTranslate,
+                            new Ext.Spacer({width:5}),
+                            buttonReadOrg,
+                            new Ext.Spacer({width:5}),
+                            buttonReadTranslated
+                    ],
+                    layout:'hbox',
+                    layoutConfig: {
+                            padding: 0,
+                            labelAlign: 'left'
+                    }
+                },{
+                    xtype: 'fieldset',
+                    hideLabel: true,
+                    style: 'margin-bottom:0;padding-bottom:0',
                 layout: 'form',
                 border:false,
                 items: [translatedField]
@@ -152,30 +152,67 @@ Ext.onReady(function(){
 	buttonAlign:'left'
     });
 
-	originalLangField.setValue(fromLangManual);
-	translatedLangField.setValue(toLangManual);
-	mainForm.render('mainDiv');
-	
 	//hint view
 	
 	var hintForm = new Ext.FormPanel({
-        labelAlign: 'top',
-        bodyStyle:'padding:5px',
-        width: 770,        
-		title: LANG.MEMORIZE_FORM_TITLE,
-        items: [{
-			border:true,
-			items:[{
-				xtype:'box',
-				id:'instruction',
-				fieldLabel:LANG("MAIN_DESC_TITLE"),
-				hideLabel: true,
-				cls:'x-form-item',
-				html:LANG("HINT_DESC_HTML"),
-			}]
-        }]
+            labelAlign: 'top',
+            bodyStyle:'padding:5px',
+            width: 770,
+            title: LANG("MEMORIZE_FORM_TITLE"),
+            items: [{
+                border:true,
+                items:[{
+                        xtype:'box',
+                        id:'instruction',
+                        fieldLabel:LANG("MAIN_DESC_TITLE"),
+                        hideLabel: true,
+                        cls:'x-form-item',
+                        html:LANG("HINT_DESC_HTML"),
+                }]
+            }]
 	});
-	
+
+	var hintForm = new Ext.FormPanel({
+            labelAlign: 'top',
+            bodyStyle:'padding:5px',
+            width: 770,
+            items: [{
+                border:true,
+                items:[{
+                        xtype:'box',
+                        id:'instruction',
+                        fieldLabel:LANG("MAIN_DESC_TITLE"),
+                        hideLabel: true,
+                        cls:'x-form-item',
+                        html:LANG("HINT_DESC_HTML"),
+                }]
+            }]
+	});
+
+        checkLearnForm = new Ext.FormPanel({
+            labelAlign: 'top',
+            bodyStyle:'padding:5px',
+            width: 770,
+            title: LANG("CHECK_LEARN_TITLE"),
+            items: [{
+                border:false,
+                items:[{
+                        xtype:'box',
+                        id:'checkLearn',
+                        fieldLabel:LANG("CHECK_LEARN_TITLE"),
+                        hideLabel: true,
+                        cls:'x-form-item',
+                        html:LANG("CHECK_LEARN_HTML"),
+                }]
+            }]
+	});
+
+	originalLangField.setValue(fromLangManual);
+	translatedLangField.setValue(toLangManual);
+	mainForm.render('mainDiv');
 	hintForm.render('hintDiv');
+        checkLearnForm.render('checkLearnDiv');
+        showOrHideLearnForm();
+        $('#learnLink').click(function (){parent.tabs.setActiveTab(1)});
 	
 });

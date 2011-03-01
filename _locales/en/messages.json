@@ -1,10 +1,27 @@
 {
 	"MEMORIZE_FORM_TITLE" : { "message": "Translate and Remember" },
-	"MEMORIZE_INSTRUCTION_TITLE" : { "message" :  "Instruction" },
-	"MEMORIZE_INSTRUCTION_HTML" : { "message" :  "Use this wisely!<br/><br/>" },
+	"MEMORIZE_INSTRUCTION_TITLE" : { "message" :  "Instructions" },
+	"MEMORIZE_INSTRUCTION_HTML" : { "message" :  "Three steps to remember words:<br/>
+        <ol style='list-style-type: decimal;list-style-position: inside;'>
+            <li>Read a question in the form</li>
+            <li>Think about the correct translation and click \"Show the answer\" to check the word</li>
+            <li>Mark how well you have remembered the word and select: <ul style='list-style-type: square;list-style-position: inside;margin-left: 30px;'>
+                <li>New to me (1) - you don't remember the translation</li>
+                <li>A bit (2) - you know the word a bit, but you're not sure</li>
+                <li>Quite (3) - you had to think a bit before it came back to you</li>
+                <li>Almost (4) - you remembered it quickly</li>
+                <li>Very good (5) - you remembered it instantly, the word is part of your vocabulary</li>
+            </ul></li>
+        </ol><br/>
+        Each word will be show up to two times during each session. Application will plan your future repetitions based on the answers you gave in such way, that it will help you learn most efficiently.<br/><br/>
+        Please give yourself honest notes for the best results.<br/><br/>
+        <a href='http://mgorecki.net/index.php/contact-me/?tas' target='_blank'>Tell me what you think about this feature, please.</a>" },
+
+        "NOWORDS_TITLE" : { "message" :  "No words for today." },
+	"NOWORDS_HTML" : { "message" :  "There are no words scheduled for learning now or all scheduled words has been remembered. Come back later to memorize more words!"},
 	
 	"STATISTICS_TITLE" : { "message" : "Today's statistics" },
-	"STATISTICS_CONTENT" : { "message" :  "Words to memorize during session: $1<br/>Total attempts in session: $2<br/>" },
+	"STATISTICS_CONTENT" : { "message" :  "Words to memorize during session: {0}<br/>Total attempts in session: {1}<br/>" },
 	"STATISTICS_CONTENT_MEMORIZED" : { "message" :  "Words memorized today ({0}): {1}" },
 	
 	"ORIGINAL_FIELD_TITLE" : { "message" :  "Original Phrase" },
@@ -48,8 +65,10 @@
 	"TO" : { "message" : "To:" },
 	"BUTTON_TRANSLATE_NOW" : { "message" : "Translate!" },
 	"MAIN_DESC_TITLE" : { "message" : "Translate And Speak!" },
-	"MAIN_DESC_HTML"  : { "message" : "<img src='images/top.png'  id='topImg' onclick=\"$('#topImg').hide('slow');\" />" },
-	"GRID_DESC_HTML"  : { "message" : "<img src='images/topgrid.png' id='topImg' onclick=\"$('#topImg').hide('slow');\" />" },
+	"MAIN_DESC_HTML"  : { "message" : "Use this form to translate a word or phase." },
+        "CHECK_LEARN_TITLE"  : { "message" : "New items to remember!" },
+        "CHECK_LEARN_HTML"  : { "message" : "You have new items to memorize. <a href='#' id='learnLink'>Click here to go to Learn Tab to start your remembering session</a>." },
+	"GRID_DESC_HTML"  : { "message" : "" },
 	"HINT_DESC_HTML"  : { "message" : "Hints: <br/>Translate and speak! lets you:
 		<ul><li>* translate and listen to text using context menu</li>
 			<li>* translate and listen to text using pop up window</li>
@@ -90,14 +109,17 @@
 	"MENU_Options" : { "message" : "Options"},
 	"MENU_TAS_OPTIONS" : { "message" : "Translate And Speak! Options"},
 	
+	"NO_WORDS_TITLE" : { "message" : "No word to remember"},
+	"NO_WORDS_MESSAGE" : { "message" : "No words has been planned for repetition today."},
+	
 	"MSTATE_0" : { "message" : "Just added (0)"},
 	"MSTATE_1" : { "message" : "New to me (1)"},
 	"MSTATE_2" : { "message" : "A bit (2)"},
-	"MSTATE_3" : { "message" : "Something (3)"},
-	"MSTATE_4" : { "message" : "Quite (4)"},
-	"MSTATE_5" : { "message" : "Almost (5)"},
-	"MSTATE_6" : { "message" : "Fully (6)"},
-	
+	"MSTATE_3" : { "message" : "Quite (3)"},
+	"MSTATE_4" : { "message" : "Almost (4)"},
+	"MSTATE_5" : { "message" : "Very good (5)"},
+	"MSTATE_6" : { "message" : "Remembered (6)"},
+
 	"LANG_af" : { "message" : "Afrikaans"},
 	"LANG_sq" : { "message" : "Albanian"},
 	"LANG_ar" : { "message" : "Arabic"},

@@ -1,7 +1,14 @@
 var db;
 
 function initDB(){
-  db = chrome.extension.getBackgroundPage().openDatabase(
+
+  var doc;
+  if(chrome.extension){
+    doc=chrome.extension.getBackgroundPage();
+  }else{
+	doc=window;
+  }
+  db = doc.openDatabase(
     'TranslateMeTutor', // dbName
     '1.0',            // version
     'TranslateMe DB for search history',  // description
@@ -13,6 +20,22 @@ function initDB(){
   	//tx.executeSql('DROP TABLE words');
     tx.executeSql('CREATE TABLE IF NOT EXISTS ' +
       'words(id INTEGER PRIMARY KEY ASC, original TEXT, translated TEXT, originalLang TEXT, translatedLang TEXT, addedOn INTEGER, lastDisplayed INTEGER, memorized INTEGER)');
+	tx.executeSql('CREATE TABLE IF NOT EXISTS ' +
+      'history(id INTEGER PRIMARY KEY ASC, id_word INTEGER, note INTEGER, addedOn INTEGER)');
+  },errorCallback);
+}
+
+function saveHistory(id_word, note){
+  db.transaction(function(tx) {
+    tx.executeSql('INSERT INTO history(id_word, note, addedOn) values (?,?,?)',
+      [id_word, note, new Date().getTime()]);
+  },errorCallback);
+}
+
+function updateMemorized(id_word, memorized){
+  db.transaction(function(tx) {
+    tx.executeSql('UPDATE words set memorized=?, lastDisplayed=? where id=?',
+      [memorized, new Date().getTime(), id_word]);
   },errorCallback);
 }
 
@@ -75,9 +98,19 @@ function selectWordsToMemorize(){
 		"or (memorized=2 and (strftime('%s',datetime('now'))-(lastDisplayed/1000))> 24*60*60) " +
 		"or (memorized=3 and (strftime('%s',datetime('now'))-(lastDisplayed/1000))> 48*60*60) " +
 		"or (memorized=4 and (strftime('%s',datetime('now'))-(lastDisplayed/1000))> 7*24*60*60) " +
-		"or (memorized=5 and (strftime('%s',datetime('now'))-(lastDisplayed/1000))> 14*24*60*60) ", [], retrieveToMemorize );
+		"or (memorized=5 and (strftime('%s',datetime('now'))-(lastDisplayed/1000))> 14*24*60*60) limit 15", [], retrieveToMemorize );
   },errorCallback);
-	
+}
+
+function selectWordsCount(callbackFn){
+  db.readTransaction(function(tx) {
+    tx.executeSql("SELECT count(*) as count from words where memorized=0 "+
+		"or (memorized=1 and (strftime('%s',datetime('now'))-(lastDisplayed/1000))> 3*60*60) " +
+		"or (memorized=2 and (strftime('%s',datetime('now'))-(lastDisplayed/1000))> 24*60*60) " +
+		"or (memorized=3 and (strftime('%s',datetime('now'))-(lastDisplayed/1000))> 48*60*60) " +
+		"or (memorized=4 and (strftime('%s',datetime('now'))-(lastDisplayed/1000))> 7*24*60*60) " +
+		"or (memorized=5 and (strftime('%s',datetime('now'))-(lastDisplayed/1000))> 14*24*60*60) ", [], callbackFn );
+  },errorCallback);
 }
 
 function errorCallback(error){

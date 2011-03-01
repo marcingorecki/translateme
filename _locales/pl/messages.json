@@ -1,10 +1,27 @@
 ﻿{
 	"MEMORIZE_FORM_TITLE" : { "message": "Translate and Remember" },
-	"MEMORIZE_INSTRUCTION_TITLE" : { "message" :  "Instruction" },
-	"MEMORIZE_INSTRUCTION_HTML" : { "message" :  "Use this wisely!<br/><br/>" },
+	"MEMORIZE_INSTRUCTION_TITLE" : { "message" :  "Instrukcja" },
+	"MEMORIZE_INSTRUCTION_HTML" : { "message" :  "Zapamiętywanie słów w trzech krokach:<br/>
+        <ol style='list-style-type: decimal;list-style-position: inside;'>
+            <li>Przeczytaj pytanie w formularzu</li>
+            <li>Przypomnij sobie prawidłową odpowiedź i naciśnij \"Pokaż odpowiedź\"</li>
+            <li>Oceń swoją odpowiedź korzystając z przycisków: <ul style='list-style-type: square;list-style-position: inside;margin-left: 30px;'>
+                <li>Nie znam (1) - nie przypomniałeś sobie odpowiedzi</li>
+                <li>Ledwo (2) - ledwo przypomniałeś sobie odpowiedź lub pamiętałeś z błędem</li>
+                <li>Kojarze (3) - musiałeś się zastanowić zanim sobie przypomniałeś</li>
+                <li>Nieźle (4) - prawidłową odpowiedź przypomniałeś sobie łatwo</li>
+                <li>Dobrze (5) - odpowiedź była oczywista, używasz tego słowa na codzień</li>
+            </ul></li>
+        </ol><br/>
+	W ciągu jednej sesji każde słowo zostanie wyświetlone do dwóch razy. Przyszłe powtórzenia aplikacja zaplanuje na podstawie ocen, których sobie udzieliłeś.<br/><br/>
+        Pamiętaj by dawać sobie szczere oceny, tylko w ten sposób system będzie działał efektywnie.<br/><br/>
+        <a href='http://mgorecki.net/index.php/contact-me/?tas' target='_blank'>Prześlij mi proszę swoje pomysły i uwagi. Z góry dziękuję.</a>" },
 	
+	"NOWORDS_TITLE" : { "message" :  "Brak słów do zapamiętywania." },
+	"NOWORDS_HTML" : { "message" :  "W tej chwili nie ma słów, które powinieneś zapamiętać lub wszystkie przygotowane słowa zostały już zapamiętane. Zajrzyj tu później!"},
+
 	"STATISTICS_TITLE" : { "message" : "Dzisiejsze wyniki" },
-	"STATISTICS_CONTENT" : { "message" :  "Słów do zapamiętania dzisiaj: $1<br/>Łączna ilość prób: $2<br/>" },
+	"STATISTICS_CONTENT" : { "message" :  "Słów do zapamiętania dzisiaj: {0}<br/>Łączna ilość prób: {1}<br/>" },
 	"STATISTICS_CONTENT_MEMORIZED" : { "message" :  "Słowa dziś zapamiętanie w pełni ({0}): {1}" },
 	
 	"ORIGINAL_FIELD_TITLE" : { "message" :  "Do tłumaczenia" },
@@ -48,8 +65,10 @@
 	"TO" : { "message" : "Na:" },
 	"BUTTON_TRANSLATE_NOW" : { "message" : "Tłumacz!" },
 	"MAIN_DESC_TITLE" : { "message" : "Translate And Speak!" },
-	"MAIN_DESC_HTML"  : { "message" : "<img src='images/top.png'  id='topImg' onclick=\"$('#topImg').hide('slow');\" />" },
-	"GRID_DESC_HTML"  : { "message" : "<img src='images/topgrid.png' id='topImg' onclick=\"$('#topImg').hide('slow');\" />" },
+	"MAIN_DESC_HTML"  : { "message" : "Użyj tego formularza by tłumaczyć słowa" },
+	"CHECK_LEARN_TITLE"  : { "message" : "Masz nowe słowa do zapamiętania!" },
+	"CHECK_LEARN_HTML"  : { "message" : "Translate and Speak! znalazł nowe słowa do zapamiętania. <a href='#' id='learnLink'>Przejdz do zakładki nauka, żeby rozpocząć zapamiętywanie.</a>." },
+	"GRID_DESC_HTML"  : { "message" : "" },
 	"HINT_DESC_HTML"  : { "message" : "Podpowiedzi: <br/>Translate and speak! pozwala:
 		<ul><li>* tłumaczyć i słuchać słów używając menu kontekstowego</li>
 			<li>* tłumaczyć i słuchać słów używając popupu wyswietlonego z ikony na pasku</li>
@@ -89,6 +108,9 @@
 	"MENU_Options" : { "message" : "Opcje"},
 	"MENU_TAS_OPTIONS" : { "message" : "Opcje Translate And Speak!"},
 	
+	"NO_WORDS_TITLE" : { "message" : "Brak słów do zapamiętania"},
+	"NO_WORDS_MESSAGE" : { "message" : "Nie ma żadnych słów do zapamiętania w tej chwili."},
+		
 	"MSTATE_0" : { "message" : "Właśnie dodany (0)"},
 	"MSTATE_1" : { "message" : "Nie znam (1)"},
 	"MSTATE_2" : { "message" : "Ledwo (2)"},

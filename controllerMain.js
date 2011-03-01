@@ -87,3 +87,20 @@ function swap(){
 	localStorage[TOLANG_MANUAL_KEY] = translatedLangField.getValue();
 }
 
+function showOrHideLearnForm(){
+        if(localStorage[SESSION_KEY] && localStorage[SESSION_KEY].length>2){
+            checkLearnForm.show();
+            setIconHighlighted();
+        } else {
+            checkLearnForm.hide();
+            selectWordsCount(showOrHideLearnFormFromDB);
+        }
+}
+
+function showOrHideLearnFormFromDB(tx, results){
+    var count = results.rows.item(0).count;
+    if(count>0){
+            checkLearnForm.show();
+            setIconHighlighted();
+    }
+}

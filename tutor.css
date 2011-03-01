@@ -4,7 +4,7 @@ background-color:#6797AE;
 background-repeat:repeat-x;
 }
 
-#mainDiv, #wordsGrid, #wordsGrid, #optionsDiv{
+#mainDiv, #wordsGrid, #wordsGrid, #optionsDiv, #memorizeDiv, #instructionDiv, #noWordsDiv, #checkLearnDiv {
 margin:10px auto 0px auto;
 width:770px;
 }
@@ -44,3 +44,35 @@ width:770px;
 	opacity: .9;
 }
 
+#memorizeDiv input{
+	border:0px;
+}
+
+#memorizeDiv button{
+	border:0px;
+}
+
+#memorizeDiv  #originalLang, #memorizeDiv  #translatedLang {
+	font-size:18px;
+	color:#A65E34;
+	height: auto;
+}
+
+#memorizeDiv  #original, #memorizeDiv  #translated {
+	font-size:20px;
+	color:#325E97;
+	font-weight:normal;
+	height: auto;
+}
+
+#memorizeDiv .x-panel-btns{
+	background-color:#fff;
+	border-left:1px solid #99BBE8;
+	border-right:1px solid #99BBE8;
+	border-bottom:1px solid #99BBE8;
+	opacity: .9;
+}
+
+#learnLink {
+        color: #F00;
+}

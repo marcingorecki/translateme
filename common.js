@@ -3,6 +3,7 @@ var TOLANG_KEY = "toLang";
 var FROMLANG_MANUAL_KEY = "fromLangManual";
 var TOLANG_MANUAL_KEY = "toLangManual";
 var VERBOSE_KEY = "verbose";
+var SESSION_KEY = 'teachingSession';
 
 //set defaults
 var fromLang = "en";
@@ -34,13 +35,13 @@ String.prototype.format = function() {
 };
 
 var memorizedStates=[
-	['0', "Just added (0)"],
-	['1', "New to me (1)"],
-	['2', "A bit (2)"],
-	['3', "Something (3)"],
-	['4', "Quite (4)"],
-	['5', "Almost (5)"],
-	['6', "Fully (6)"]
+	['0', LANG("MSTATE_0")],
+	['1', LANG("MSTATE_1")],
+	['2', LANG("MSTATE_2")],
+	['3', LANG("MSTATE_3")],
+	['4', LANG("MSTATE_4")],
+	['5', LANG("MSTATE_5")],
+	['6', LANG("MSTATE_6")]
 ];
 
 var languagesArray = [
@@ -102,7 +103,9 @@ var languagesArray = [
 //initialize google analytics
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-21038528-1']);
-  _gaq.push(['_trackPageview']);
+  if(!verbose){
+	_gaq.push(['_trackPageview']);
+  }
   (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = 'https://ssl.google-analytics.com/ga.js';
@@ -137,15 +140,16 @@ function initializeTaS(){
 		toLangManual = toLang;
 	}
 	
-	//debug
-	if(localStorage[VERBOSE_KEY]=="1"){
-		verbose=true;
+	//hide console log
+	if(localStorage[VERBOSE_KEY]!="1"){
+		console.log=function() {};
 	}
 }
 
 function log(message){
 	if(verbose){
-		console.log(message);
+		var fnname=arguments.callee.caller.name;
+		console.log('['+fnname+'] '+message);		
 	}
 }
 
@@ -183,6 +187,14 @@ function showNotification(title, text){
 	//notifications not available, use old alert() method
 	alert(title+" - "+text);
    }
+}
+
+function setIconHighlighted(){
+    chrome.browserAction.setIcon({path:"Translation48Learn.png"});
+}
+
+function resetIcon(){
+    chrome.browserAction.setIcon({path:"Translation48.png"});
 }
 
 //initalize
