@@ -125,15 +125,13 @@ function memorize(){
 }
 
 function showWord(){
-	console.log(currentWord);
-	console.log(wordsToMemorize);
 	originalField.setValue(wordsToMemorize[currentWord].original);
 	originalLangField.setValue(wordsToMemorize[currentWord].originalLang);
 	translatedField.setValue(wordsToMemorize[currentWord].translated);
 	translatedLangField.setValue(wordsToMemorize[currentWord].translatedLang);
 }
 
-function showNextQuestion(){
+function showNextQuestion(){    
 	//are there any words left for this session?
 	if(wordsToMemorize.length>0){
 		stats.totalAttempts++;
@@ -143,6 +141,7 @@ function showNextQuestion(){
                         loops++;
 		}
                 if(loops>=2){
+                    _gaq.push(['_trackEvent', 'Memorize', 'finishAfterTwoLoops']);
                     finishSession();
                 }else{
                     currentState = STATES.SHOWING_NEW_WORD;
@@ -159,6 +158,7 @@ function showNextQuestion(){
 }
 
 function showAnswer(){
+        _gaq.push(['_trackEvent', 'Memorize', 'showAnswer']);
 	currentState=STATES.WAIT_FOR_SELF_ASSESSMENT;
 	memorize();
 }
@@ -207,10 +207,12 @@ function finishSession(){
 }
 
 function doneForNow(){
+    _gaq.push(['_trackEvent', 'Memorize', 'doneForNow']);
     finishSession();
 }
 
 function removeFromLearning(){
+    _gaq.push(['_trackEvent', 'Memorize', 'removeFromLearning']);
     updateMemorized(wordsToMemorize[currentWord].id, 6);
     wordsToMemorize.splice(currentWord,1);
     localStorage[SESSION_KEY]=JSON.stringify(wordsToMemorize);
