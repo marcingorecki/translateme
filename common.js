@@ -128,7 +128,9 @@ function initializeTaS(){
 	if(storedFromLang) {
 		fromLang=storedFromLang
 	} else {
-		showOptions();
+		if(typeof showOptions == 'function'){
+                    showOptions();
+                }
 	}
 	if(storedToLang) toLang=storedToLang;
 	

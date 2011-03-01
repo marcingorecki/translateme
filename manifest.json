@@ -6,6 +6,7 @@
   "permissions": [
     "contextMenus",
     "notifications",
+	"unlimitedStorage",
     "http://translate.google.com/"
   ],
   "browser_action": {

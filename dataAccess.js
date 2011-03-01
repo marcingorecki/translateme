@@ -8,14 +8,17 @@ function initDB(){
   }else{
 	doc=window;
   }
-  db = doc.openDatabase(
-    'TranslateMeTutor', // dbName
-    '1.0',            // version
-    'TranslateMe DB for search history',  // description
-    5 * 1024 * 1024,  // estimatedSize in bytes
-    function(db) {}   // optional creationCallback
-  );
-  
+  if(doc.db!=undefined){
+      db=doc.db;
+  }else{
+      db = doc.openDatabase(
+        'TranslateMeTutor', // dbName
+        '1.0',            // version
+        'TranslateMe DB for search history',  // description
+        5 * 1024 * 1024,  // estimatedSize in bytes
+        function(db) {}   // optional creationCallback
+      );
+  }
   db.transaction(function(tx) {
   	//tx.executeSql('DROP TABLE words');
     tx.executeSql('CREATE TABLE IF NOT EXISTS ' +
